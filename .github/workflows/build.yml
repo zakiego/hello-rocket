@@ -3,7 +3,7 @@ name: Build
 on: [push]
 
 jobs:
-  build_and_test:
+  build:
     name: Rust project
     runs-on: ubuntu-latest
     steps:
@@ -27,4 +27,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/rocket-playground:${{ github.run_number }}
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/rocket-playground:${{ github.run_number }}
+            ${{ secrets.DOCKER_USERNAME }}/rocket-playground:latest
